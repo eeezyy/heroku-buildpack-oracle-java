@@ -102,6 +102,8 @@ install_java() {
   
   export JAVA_HOME="${build_dir}/.jdk"
   export PATH="${build_dir}/.jdk/bin:${PATH}"
+  update-alternatives --install "/usr/bin/java" "java" "${build_dir}/.jdk/bin/java" 1
+  update-alternatives --set java "${build_dir}/.jdk/bin/java"
 }
 
 install_jce() {
