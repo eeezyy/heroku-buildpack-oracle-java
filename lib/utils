@@ -95,6 +95,7 @@ install_java() {
     rm -rf "${cache_dir}/.jdk/src.zip" "${cache_dir}/.jdk/javafx-src.zip" "${cache_dir}/.jdk/db" "${cache_dir}/.jdk/man"
   fi
   cp -r "${cache_dir}/.jdk/." "${build_dir}/.jdk"
+  cp -r "${cache_dir}/.jdk/." "/app/.jdk"
   
   if [ ! -f "${build_dir}/.jdk/bin/java" ]; then
     error "Unable to retrieve JDK."
@@ -102,10 +103,10 @@ install_java() {
   
   export JAVA_HOME="${build_dir}/.jdk"
   export PATH="${build_dir}/.jdk/bin:${PATH}"
-  update-alternatives --install "/usr/bin/java" "java" "${build_dir}/.jdk/bin/java" 1
-  update-alternatives --set java "${build_dir}/.jdk/bin/java"
-  update-alternatives --install "/usr/bin/javac" "javac" "${build_dir}/.jdk/bin/javac" 1
-  update-alternatives --set javac "${build_dir}/.jdk/bin/javac"
+  update-alternatives --install "/usr/bin/java" "java" "/app/.jdk/bin/java" 1
+  update-alternatives --set java "/app/.jdk/bin/java"
+  update-alternatives --install "/usr/bin/javac" "javac" "/app/.jdk/bin/javac" 1
+  update-alternatives --set javac "/app/.jdk/bin/javac"
 }
 
 install_jce() {
