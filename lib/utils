@@ -107,7 +107,7 @@ install_java() {
   update-alternatives --set java "/app/.jdk/bin/java"
   update-alternatives --install "/usr/bin/javac" "javac" "/app/.jdk/bin/javac" 1
   update-alternatives --set javac "/app/.jdk/bin/javac"
-  sudo apt-get purge openjdk-7-jre
+  rm -rf "/usr/libjvm/java-7-openjdk-amd64/"
 }
 
 install_jce() {
